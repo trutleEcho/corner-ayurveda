@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://cornerayurveda.com/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /admin/
