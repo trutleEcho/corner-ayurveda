@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, Filter, BookOpen, Leaf, Brain, Heart } from "lucide-react";
+import { Search, Filter, Leaf, Brain, Heart, Clock, User } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ayurvedic Articles - Educational Resources",
-  description: "Comprehensive educational articles about Ayurveda, herbs, treatments, and traditional healing practices. Learn from expert practitioners and researchers.",
-  keywords: ["ayurvedic articles", "herbal medicine", "traditional healing", "ayurveda education", "natural remedies"],
+  title: "Ayurvedic Articles - In-Depth Wellness Education",
+  description: "Explore comprehensive Ayurvedic articles covering herbs, treatments, doshas, and holistic healing practices. Deep dive into traditional wisdom.",
+  keywords: ["ayurvedic articles", "ayurveda education", "natural remedies", "holistic healing", "doshas"],
 };
 
 const categories = [
@@ -44,8 +44,8 @@ const educationalTopics = [
   }
 ];
 
-export default function ArticlesPage() {
-  const articles = getAllArticles();
+export default async function ArticlesPage() {
+  const articles = await getAllArticles();
   const featuredArticles = articles.filter(article => article.featured);
   const recentArticles = articles.slice(0, 6);
 
@@ -56,21 +56,20 @@ export default function ArticlesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-4">
-              Ayurvedic Knowledge Center
+              Ayurvedic Articles
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Deepen your understanding of Ayurveda with our comprehensive collection of 
-              educational articles. From ancient wisdom to modern applications, explore 
-              the science and art of traditional healing.
+              Explore comprehensive Ayurvedic articles covering herbs, treatments, doshas, and holistic healing practices. 
+              Deep dive into traditional wisdom for modern understanding.
             </p>
           </div>
 
           {/* Educational Topics */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {educationalTopics.map((topic) => {
               const Icon = topic.icon;
               return (
-                <Card key={topic.title} className="text-center border-0 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <Card key={topic.title} className="text-center border-0 bg-card/50 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
                       <Icon className="h-6 w-6 text-primary" />
@@ -86,7 +85,7 @@ export default function ArticlesPage() {
         </div>
       </section>
 
-      {/* Search and Filters */}
+      {/* Filters and Search */}
       <section className="py-8 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
@@ -104,7 +103,7 @@ export default function ArticlesPage() {
               {categories.map((category) => (
                 <Badge
                   key={category}
-                  variant={category === "All Articles" ? "secondary" : "outline"}
+                  variant="outline"
                   className="cursor-pointer hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
                 >
                   {category}
@@ -122,8 +121,8 @@ export default function ArticlesPage() {
             <h2 className="text-2xl font-serif font-semibold text-foreground mb-8">
               Featured Articles
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {featuredArticles.slice(0, 3).map((article) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredArticles.map((article) => (
                 <BlogCard key={article.slug} {...article} type="article" />
               ))}
             </div>
@@ -132,21 +131,21 @@ export default function ArticlesPage() {
       )}
 
       {/* Recent Articles */}
-      <section className="py-12 bg-muted/30">
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-2xl font-serif font-semibold text-foreground">
-                Latest Articles
+                Recent Articles
               </h2>
               <p className="text-muted-foreground">
-                Educational content on Ayurvedic principles and practices
+                Latest educational content and research insights
               </p>
             </div>
             
             <Button variant="outline" size="sm">
               <Filter className="h-4 w-4 mr-2" />
-              Sort by Topic
+              Sort by
             </Button>
           </div>
 
@@ -159,116 +158,38 @@ export default function ArticlesPage() {
           ) : (
             <div className="text-center py-12">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
-                <BookOpen className="h-8 w-8 text-muted-foreground" />
+                <Search className="h-8 w-8 text-muted-foreground" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">
-                No articles available yet
+                No articles found
               </h3>
               <p className="text-muted-foreground">
-                Educational content is being prepared. Check back soon!
+                Check back soon for new educational content
               </p>
             </div>
           )}
-
-          {recentArticles.length > 6 && (
-            <div className="text-center mt-12">
-              <Button variant="outline" size="lg">
-                Load More Articles
-              </Button>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* Learning Path */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif font-bold text-foreground mb-4">
-              Start Your Ayurvedic Learning Journey
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Whether you're new to Ayurveda or looking to deepen your knowledge, 
-              our structured learning path will guide you through the essentials.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-0 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <span className="text-primary font-bold">1</span>
-                </div>
-                <CardTitle className="text-lg">Foundations</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Learn the basic principles of Ayurveda, including the three doshas, 
-                  constitution types, and fundamental concepts.
-                </p>
-                <Button variant="outline" size="sm">
-                  Start Learning
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <span className="text-primary font-bold">2</span>
-                </div>
-                <CardTitle className="text-lg">Herbs & Remedies</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Explore the world of Ayurvedic herbs, their properties, 
-                  and how to use them for various health conditions.
-                </p>
-                <Button variant="outline" size="sm">
-                  Explore Herbs
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                  <span className="text-primary font-bold">3</span>
-                </div>
-                <CardTitle className="text-lg">Lifestyle Integration</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Discover how to integrate Ayurvedic principles into your 
-                  daily routine for optimal health and wellness.
-                </p>
-                <Button variant="outline" size="sm">
-                  Apply Knowledge
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Expert Consultation CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10">
+      {/* Newsletter Signup */}
+      <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-serif font-bold text-foreground mb-4">
-            Need Personalized Guidance?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            While our articles provide comprehensive information, nothing replaces 
-            personalized consultation with our Ayurvedic experts.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg">
-              Book Consultation
-            </Button>
-            <Button variant="outline" size="lg">
-              Contact Expert
-            </Button>
-          </div>
+          <Card className="border-0 bg-card/50 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-2xl font-serif">
+                Stay Updated with Educational Content
+              </CardTitle>
+              <p className="text-muted-foreground">
+                Get the latest Ayurvedic research and educational articles delivered to your inbox
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <Input placeholder="Enter your email" className="flex-1" />
+                <Button>Subscribe</Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>

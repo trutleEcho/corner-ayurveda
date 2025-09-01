@@ -1,199 +1,258 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { supabase } from './supabase';
 import { Product, BlogPost, Article } from '@/types';
 
-const contentDirectory = path.join(process.cwd(), 'src/content');
-const dataDirectory = path.join(process.cwd(), 'src/data');
-
 // Product functions
-export function getAllProducts(): Product[] {
-  const productsPath = path.join(dataDirectory, 'products.json');
-  const fileContents = fs.readFileSync(productsPath, 'utf8');
-  return JSON.parse(fileContents);
+export async function getAllProducts(): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
-export function getProductById(id: string): Product | null {
-  const products = getAllProducts();
-  return products.find(product => product.id === id) || null;
+export async function getProductById(id: string): Promise<Product | null> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.error('Error fetching product:', error);
+    return null;
+  }
+
+  return data;
 }
 
-export function getProductsByCategory(category: string): Product[] {
-  const products = getAllProducts();
-  return products.filter(product => 
-    product.category.toLowerCase() === category.toLowerCase()
-  );
+export async function getProductsByCategory(category: string): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('category', category)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching products by category:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
-export function getFeaturedProducts(limit: number = 6): Product[] {
-  const products = getAllProducts();
-  return products
-    .filter(product => product.isBestseller || product.isNew)
-    .slice(0, limit);
+export async function getFeaturedProducts(limit: number = 6): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .or('is_bestseller.eq.true,is_new.eq.true')
+    .limit(limit)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching featured products:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
 // Blog functions
-export function getAllBlogPosts(): BlogPost[] {
-  const blogsDirectory = path.join(contentDirectory, 'blogs');
-  
-  if (!fs.existsSync(blogsDirectory)) {
+export async function getAllBlogPosts(): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching blog posts:', error);
     return [];
   }
 
-  const fileNames = fs.readdirSync(blogsDirectory);
-  const allPostsData = fileNames
-    .filter(name => name.endsWith('.mdx'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, '');
-      const fullPath = path.join(blogsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-
-      return {
-        slug,
-        content,
-        ...data,
-      } as BlogPost;
-    });
-
-  return allPostsData.sort((a, b) => {
-    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-  });
+  return data || [];
 }
 
-export function getBlogPostBySlug(slug: string): BlogPost | null {
-  try {
-    const fullPath = path.join(contentDirectory, 'blogs', `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', slug)
+    .single();
 
-    return {
-      slug,
-      content,
-      ...data,
-    } as BlogPost;
-  } catch (error) {
+  if (error) {
+    console.error('Error fetching blog post:', error);
     return null;
   }
+
+  return data;
 }
 
-export function getFeaturedBlogPosts(limit: number = 3): BlogPost[] {
-  const posts = getAllBlogPosts();
-  return posts
-    .filter(post => post.featured)
-    .slice(0, limit);
+export async function getFeaturedBlogPosts(limit: number = 3): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('featured', true)
+    .limit(limit)
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching featured blog posts:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
-export function getBlogPostsByCategory(category: string): BlogPost[] {
-  const posts = getAllBlogPosts();
-  return posts.filter(post => 
-    post.category.toLowerCase() === category.toLowerCase()
-  );
+export async function getBlogPostsByCategory(category: string): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('category', category)
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching blog posts by category:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
 // Article functions
-export function getAllArticles(): Article[] {
-  const articlesDirectory = path.join(contentDirectory, 'articles');
-  
-  if (!fs.existsSync(articlesDirectory)) {
+export async function getAllArticles(): Promise<Article[]> {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching articles:', error);
     return [];
   }
 
-  const fileNames = fs.readdirSync(articlesDirectory);
-  const allArticlesData = fileNames
-    .filter(name => name.endsWith('.mdx'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, '');
-      const fullPath = path.join(articlesDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-
-      return {
-        slug,
-        content,
-        ...data,
-      } as Article;
-    });
-
-  return allArticlesData.sort((a, b) => {
-    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-  });
+  return data || [];
 }
 
-export function getArticleBySlug(slug: string): Article | null {
-  try {
-    const fullPath = path.join(contentDirectory, 'articles', `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('slug', slug)
+    .single();
 
-    return {
-      slug,
-      content,
-      ...data,
-    } as Article;
-  } catch (error) {
+  if (error) {
+    console.error('Error fetching article:', error);
     return null;
   }
+
+  return data;
 }
 
-export function getFeaturedArticles(limit: number = 3): Article[] {
-  const articles = getAllArticles();
-  return articles
-    .filter(article => article.featured)
-    .slice(0, limit);
+export async function getFeaturedArticles(limit: number = 3): Promise<Article[]> {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('featured', true)
+    .limit(limit)
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching featured articles:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
-export function getArticlesByCategory(category: string): Article[] {
-  const articles = getAllArticles();
-  return articles.filter(article => 
-    article.category.toLowerCase() === category.toLowerCase()
-  );
+export async function getArticlesByCategory(category: string): Promise<Article[]> {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('category', category)
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching articles by category:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
 // Search functions
-export function searchProducts(query: string): Product[] {
-  const products = getAllProducts();
-  const searchTerm = query.toLowerCase();
-  
-  return products.filter(product => 
-    product.name.toLowerCase().includes(searchTerm) ||
-    product.description.toLowerCase().includes(searchTerm) ||
-    product.category.toLowerCase().includes(searchTerm) ||
-    product.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-  );
+export async function searchProducts(query: string): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .or(`name.ilike.%${query}%,description.ilike.%${query}%,category.ilike.%${query}%`)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error searching products:', error);
+    return [];
+  }
+
+  return data || [];
 }
 
-export function searchContent(query: string): (BlogPost | Article)[] {
-  const blogs = getAllBlogPosts();
-  const articles = getAllArticles();
-  const allContent = [...blogs, ...articles];
-  const searchTerm = query.toLowerCase();
+export async function searchContent(query: string): Promise<(BlogPost | Article)[]> {
+  const [blogResult, articleResult] = await Promise.all([
+    supabase
+      .from('blog_posts')
+      .select('*')
+      .or(`title.ilike.%${query}%,excerpt.ilike.%${query}%,category.ilike.%${query}%`),
+    supabase
+      .from('articles')
+      .select('*')
+      .or(`title.ilike.%${query}%,excerpt.ilike.%${query}%,category.ilike.%${query}%`)
+  ]);
+
+  if (blogResult.error) {
+    console.error('Error searching blog posts:', blogResult.error);
+  }
+
+  if (articleResult.error) {
+    console.error('Error searching articles:', articleResult.error);
+  }
+
+  const blogs = blogResult.data || [];
+  const articles = articleResult.data || [];
   
-  return allContent.filter(content => 
-    content.title.toLowerCase().includes(searchTerm) ||
-    content.excerpt.toLowerCase().includes(searchTerm) ||
-    content.category.toLowerCase().includes(searchTerm) ||
-    content.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-  );
+  return [...blogs, ...articles];
 }
 
 // Category functions
-export function getAllCategories(): string[] {
-  const products = getAllProducts();
-  const blogs = getAllBlogPosts();
-  const articles = getAllArticles();
-  
-  const productCategories = products.map(p => p.category);
-  const blogCategories = blogs.map(b => b.category);
-  const articleCategories = articles.map(a => a.category);
+export async function getAllCategories(): Promise<string[]> {
+  const [productResult, blogResult, articleResult] = await Promise.all([
+    supabase.from('products').select('category'),
+    supabase.from('blog_posts').select('category'),
+    supabase.from('articles').select('category')
+  ]);
+
+  const productCategories = productResult.data?.map(p => p.category) || [];
+  const blogCategories = blogResult.data?.map(b => b.category) || [];
+  const articleCategories = articleResult.data?.map(a => a.category) || [];
   
   const allCategories = [...productCategories, ...blogCategories, ...articleCategories];
   return [...new Set(allCategories)].sort();
 }
 
-export function getProductCategories(): string[] {
-  const products = getAllProducts();
-  const categories = products.map(p => p.category);
+export async function getProductCategories(): Promise<string[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('category');
+
+  if (error) {
+    console.error('Error fetching product categories:', error);
+    return [];
+  }
+
+  const categories = data?.map(p => p.category) || [];
   return [...new Set(categories)].sort();
 }
 

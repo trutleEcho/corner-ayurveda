@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next'
-import { getAllBlogPosts, getAllArticles } from '@/lib/content'
-import productsData from '@/data/products.json'
+import { getAllBlogPosts, getAllArticles, getAllProducts } from '@/lib/content'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://cornerayurveda.com'
   
   // Static pages
@@ -45,8 +44,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // Fetch data from Supabase
+  const [products, blogPosts, articles] = await Promise.all([
+    getAllProducts(),
+    getAllBlogPosts(),
+    getAllArticles()
+  ]);
+
   // Product pages
-  const productPages = productsData.map((product) => ({
+  const productPages = products.map((product) => ({
     url: `${baseUrl}/products/${product.id}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -54,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Blog posts
-  const blogPosts = getAllBlogPosts().map((post) => ({
+  const blogPostPages = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly' as const,
@@ -62,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Articles
-  const articles = getAllArticles().map((article) => ({
+  const articlePages = articles.map((article) => ({
     url: `${baseUrl}/articles/${article.slug}`,
     lastModified: new Date(article.publishedAt),
     changeFrequency: 'monthly' as const,
@@ -72,8 +78,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticPages,
     ...productPages,
-    ...blogPosts,
-    ...articles,
+    ...blogPostPages,
+    ...articlePages,
   ]
 }
 

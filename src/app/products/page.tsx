@@ -31,9 +31,11 @@ const benefits = [
   },
 ];
 
-export default function ProductsPage() {
-  const products = getAllProducts();
-  const categories = getProductCategories();
+export default async function ProductsPage() {
+  const [products, categories] = await Promise.all([
+    getAllProducts(),
+    getProductCategories()
+  ]);
 
   return (
     <div className="min-h-screen pt-16">

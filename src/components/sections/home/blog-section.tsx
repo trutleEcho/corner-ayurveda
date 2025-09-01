@@ -2,34 +2,19 @@ import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {ArrowRight} from "lucide-react";
 import BlogCard from "@/components/ui/BlogCard";
+import { BlogPost, Article } from "@/types";
 
-export default function BlogSection(){
+interface BlogSectionProps {
+  featuredBlogs: BlogPost[];
+  featuredArticles: Article[];
+}
 
-    const featuredBlogs = [
-        {
-            slug: "ayurveda-modern-wellness",
-            title: "How Ancient Ayurveda Meets Modern Wellness",
-            excerpt: "Discover how traditional Ayurvedic principles are being validated by modern science and integrated into contemporary wellness practices.",
-            image: "/images/blog/ayurveda-modern.jpg",
-            author: "Dr. Priya Sharma",
-            publishedAt: "2024-01-15",
-            readTime: 8,
-            category: "Wellness",
-            featured: true,
-            type: "blog" as const,
-        },
-        {
-            slug: "benefits-of-ashwagandha",
-            title: "The Science Behind Ashwagandha's Stress-Relief Properties",
-            excerpt: "Explore the research-backed benefits of Ashwagandha and how this adaptogenic herb can help manage stress and improve overall well-being.",
-            image: "/images/blog/ashwagandha-benefits.jpg",
-            author: "Dr. Rajesh Kumar",
-            publishedAt: "2024-01-10",
-            readTime: 6,
-            category: "Herbs",
-            type: "article" as const,
-        },
-    ];
+export default function BlogSection({ featuredBlogs, featuredArticles }: BlogSectionProps){
+    // Combine featured blogs and articles, prioritizing blogs first
+    const featuredContent = [
+      ...featuredBlogs.slice(0, 2),
+      ...featuredArticles.slice(0, 1)
+    ].slice(0, 3);
 
     return(
         <>
@@ -60,11 +45,21 @@ export default function BlogSection(){
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        {featuredBlogs.map((blog) => (
-                            <BlogCard key={blog.slug} {...blog} />
-                        ))}
-                    </div>
+                    {featuredContent.length > 0 ? (
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            {featuredContent.map((content) => (
+                                <BlogCard 
+                                    key={content.slug} 
+                                    {...content} 
+                                    type={featuredBlogs.includes(content) ? "blog" : "article"}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12">
+                            <p className="text-muted-foreground">No featured content available at the moment.</p>
+                        </div>
+                    )}
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 sm:hidden">
                         <Button variant="outline" asChild>

@@ -28,7 +28,7 @@ interface ProductPageProps {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = getProductById(params.id);
+  const product = await getProductById(params.id);
   
   if (!product) {
     return {
@@ -49,20 +49,20 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 export async function generateStaticParams() {
-  const products = getAllProducts();
+  const products = await getAllProducts();
   return products.map((product) => ({
     id: product.id,
   }));
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = getProductById(params.id);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const product = await getProductById(params.id);
 
   if (!product) {
     notFound();
   }
 
-  const allProducts = getAllProducts();
+  const allProducts = await getAllProducts();
   const relatedProducts = allProducts
     .filter(p => p.id !== product.id && p.category === product.category)
     .slice(0, 4);

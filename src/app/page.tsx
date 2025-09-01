@@ -3,8 +3,15 @@ import HeritageSection from "@/components/sections/home/heritage-section";
 import CtaSection from "@/components/sections/home/cta-section";
 import ProductSection from "@/components/sections/home/product-section";
 import BlogSection from "@/components/sections/home/blog-section";
+import { getFeaturedProducts, getFeaturedBlogPosts, getFeaturedArticles } from "@/lib/content";
 
-export default function Home() {
+export default async function Home() {
+    const [featuredProducts, featuredBlogs, featuredArticles] = await Promise.all([
+        getFeaturedProducts(6),
+        getFeaturedBlogPosts(3),
+        getFeaturedArticles(3)
+    ]);
+
     return (
         <div className="min-h-screen">
             {/* Hero Section */}
@@ -14,10 +21,10 @@ export default function Home() {
             <HeritageSection/>
 
             {/* Featured Products Section */}
-            <ProductSection/>
+            <ProductSection featuredProducts={featuredProducts} />
 
             {/* Featured Articles & Blog Section */}
-            <BlogSection/>
+            <BlogSection featuredBlogs={featuredBlogs} featuredArticles={featuredArticles} />
 
             {/* Call to Action Section */}
             <CtaSection/>

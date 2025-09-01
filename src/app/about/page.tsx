@@ -76,20 +76,14 @@ const milestones = [
 
 const team = [
   {
-    name: "Dr. Priya Sharma",
-    role: "Chief Ayurvedic Officer",
-    image: "/images/team/dr-priya.jpg",
-    bio: "25+ years of experience in traditional Ayurvedic medicine and modern wellness integration.",
-  },
-  {
-    name: "Rajesh Kumar",
-    role: "Quality Assurance Director",
+    name: "Anil Tanksali",
+    role: "Founder",
     image: "/images/team/rajesh.jpg",
     bio: "Expert in herbal medicine quality control with extensive knowledge of traditional preparation methods.",
   },
   {
-    name: "Anita Patel",
-    role: "Research & Development Head",
+    name: "Prashant Tanksali",
+    role: "Founder",
     image: "/images/team/anita.jpg",
     bio: "Leading our efforts to validate traditional formulations through modern scientific research.",
   },
@@ -97,10 +91,24 @@ const team = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-24">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5">
+        {/* Background video */}
+        <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="https://cdn.pixabay.com/video/2025/06/24/287510_large.mp4" // Put your video file in public/videos
+            autoPlay
+            loop
+            muted
+            playsInline
+        />
+
+        {/* Overlay (optional, for readability) */}
+        <div className="absolute inset-0 bg-black/30" />
+
+        {/* Foreground content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
@@ -109,12 +117,12 @@ export default function AboutPage() {
               <h1 className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-6">
                 Preserving Ayurvedic Heritage for Modern Wellness
               </h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            For nearly four decades, Corner Medical Stores has been dedicated to preserving
-            the ancient wisdom of Ayurveda while making it accessible to the modern world. 
-            Our journey began with a simple belief: that traditional healing wisdom, 
-            when combined with modern quality standards, can transform lives.
-          </p>
+              <p className="text-lg text-muted-foreground mb-8">
+                For nearly four decades, Corner Medical Stores has been dedicated to preserving
+                the ancient wisdom of Ayurveda while making it accessible to the modern world.
+                Our journey began with a simple belief: that traditional healing wisdom,
+                when combined with modern quality standards, can transform lives.
+              </p>
               <Button asChild size="lg">
                 <Link href="/products">
                   Explore Our Products
@@ -125,10 +133,10 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/3] relative bg-muted/30 rounded-lg overflow-hidden">
                 <Image
-                  src="/images/about/heritage.jpg"
-                  alt="Ayurvedic Heritage"
-                  fill
-                  className="object-cover"
+                    src="/images/about/heritage.png"
+                    alt="Ayurvedic Heritage"
+                    fill
+                    className="object-cover"
                 />
               </div>
             </div>
@@ -268,7 +276,7 @@ export default function AboutPage() {
               <Card key={member.name} className="text-center border-0 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="w-24 h-24 mx-auto mb-4 bg-muted/50 rounded-full"></div>
-                  <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
+                  <h3 className="font-semibold text-foreground mb-1 font-[montserrat]">{member.name}</h3>
                   <p className="text-sm text-primary mb-3">{member.role}</p>
                   <p className="text-sm text-muted-foreground">{member.bio}</p>
                 </CardContent>
