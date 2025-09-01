@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .filter(p => p.slug !== post.slug && p.category === post.category)
     .slice(0, 3);
 
-  const publishedDate = new Date(post.publishedAt);
+  const publishedDate = new Date(post.publishedAt || new Date());
   const updatedDate = post.updatedAt ? new Date(post.updatedAt) : null;
 
   return (

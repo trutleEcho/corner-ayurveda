@@ -95,7 +95,7 @@ export default function BlogCard({
           </div>
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
-            <span>{new Date(publishedAt).toLocaleDateString()}</span>
+            <span>{new Date(publishedAt || new Date()).toLocaleDateString()}</span>
           </div>
           <div className="flex items-center gap-1">
             <Clock className="h-4 w-4" />

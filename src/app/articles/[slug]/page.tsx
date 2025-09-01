@@ -79,7 +79,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     ? allProducts.filter(p => article.relatedProducts!.includes(p.id)).slice(0, 4)
     : [];
 
-  const publishedDate = new Date(article.publishedAt);
+  const publishedDate = new Date(article.publishedAt || new Date());
   const updatedDate = article.updatedAt ? new Date(article.updatedAt) : null;
 
   return (

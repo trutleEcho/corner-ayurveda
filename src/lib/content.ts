@@ -3,17 +3,22 @@ import { Product, BlogPost, Article } from '@/types';
 
 // Product functions
 export async function getAllProducts(): Promise<Product[]> {
-  const { data, error } = await supabase
-    .from('products')
-    .select('*')
-    .order('created_at', { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-  if (error) {
+    if (error) {
+      console.error('Error fetching products:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
     console.error('Error fetching products:', error);
     return [];
   }
-
-  return data || [];
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
@@ -64,17 +69,22 @@ export async function getFeaturedProducts(limit: number = 6): Promise<Product[]>
 
 // Blog functions
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .order('published_at', { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .order('published_at', { ascending: false });
 
-  if (error) {
+    if (error) {
+      console.error('Error fetching blog posts:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
   }
-
-  return data || [];
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -125,17 +135,22 @@ export async function getBlogPostsByCategory(category: string): Promise<BlogPost
 
 // Article functions
 export async function getAllArticles(): Promise<Article[]> {
-  const { data, error } = await supabase
-    .from('articles')
-    .select('*')
-    .order('published_at', { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .order('published_at', { ascending: false });
 
-  if (error) {
+    if (error) {
+      console.error('Error fetching articles:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
     console.error('Error fetching articles:', error);
     return [];
   }
-
-  return data || [];
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
