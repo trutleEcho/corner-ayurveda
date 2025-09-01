@@ -1,0 +1,187 @@
+[
+  {
+    "id": "1",
+    "name": "Ashwagandha Premium Capsules",
+    "description": "Pure Ashwagandha extract for stress relief and vitality enhancement. Our premium formula contains 600mg of standardized Ashwagandha root extract per capsule.",
+    "price": 899,
+    "originalPrice": 1199,
+    "image": "/images/products/ashwagandha.jpg",
+    "images": [
+      "/images/products/ashwagandha.jpg",
+      "/images/products/ashwagandha-2.jpg",
+      "/images/products/ashwagandha-3.jpg"
+    ],
+    "rating": 4.8,
+    "reviewCount": 256,
+    "category": "Wellness",
+    "tags": ["stress-relief", "adaptogen", "energy", "immunity"],
+    "benefits": [
+      "Reduces stress and anxiety",
+      "Improves energy levels",
+      "Supports immune system",
+      "Enhances sleep quality",
+      "Boosts cognitive function"
+    ],
+    "ingredients": [
+      "Ashwagandha Root Extract (600mg)",
+      "Vegetarian Capsule",
+      "Rice Flour (filler)",
+      "Magnesium Stearate (anti-caking agent)"
+    ],
+    "usage": "Take 1-2 capsules daily with water, preferably after meals or as directed by your healthcare provider.",
+    "isBestseller": true,
+    "inStock": true,
+    "sku": "ASH-001",
+    "weight": "60 capsules",
+    "dimensions": "10cm x 5cm x 5cm"
+  },
+  {
+    "id": "2",
+    "name": "Turmeric Curcumin Complex",
+    "description": "High-potency turmeric with black pepper for maximum absorption. Contains 95% curcuminoids for powerful anti-inflammatory benefits.",
+    "price": 749,
+    "image": "/images/products/turmeric.jpg",
+    "images": [
+      "/images/products/turmeric.jpg",
+      "/images/products/turmeric-2.jpg"
+    ],
+    "rating": 4.7,
+    "reviewCount": 189,
+    "category": "Anti-inflammatory",
+    "tags": ["anti-inflammatory", "antioxidant", "joint-health", "immunity"],
+    "benefits": [
+      "Powerful anti-inflammatory properties",
+      "Rich in antioxidants",
+      "Supports joint health",
+      "Aids digestion",
+      "Boosts immune system"
+    ],
+    "ingredients": [
+      "Turmeric Root Extract (500mg)",
+      "Black Pepper Extract (5mg)",
+      "Vegetarian Capsule",
+      "Microcrystalline Cellulose"
+    ],
+    "usage": "Take 1 capsule twice daily with meals for optimal absorption.",
+    "isNew": true,
+    "inStock": true,
+    "sku": "TUR-001",
+    "weight": "90 capsules"
+  },
+  {
+    "id": "3",
+    "name": "Brahmi Memory Booster",
+    "description": "Traditional Brahmi formula for cognitive enhancement and mental clarity. Supports brain health and improves memory function.",
+    "price": 649,
+    "originalPrice": 799,
+    "image": "/images/products/brahmi.jpg",
+    "rating": 4.6,
+    "reviewCount": 142,
+    "category": "Brain Health",
+    "tags": ["memory", "cognitive-health", "brain-tonic", "concentration"],
+    "benefits": [
+      "Enhances memory and learning",
+      "Improves concentration",
+      "Supports brain health",
+      "Reduces mental fatigue",
+      "Promotes mental clarity"
+    ],
+    "ingredients": [
+      "Brahmi Leaf Extract (400mg)",
+      "Mandukaparni Extract (100mg)",
+      "Vegetarian Capsule",
+      "Silica"
+    ],
+    "usage": "Take 1 capsule daily in the morning with water or as recommended by your healthcare practitioner.",
+    "inStock": true,
+    "sku": "BRA-001",
+    "weight": "60 capsules"
+  },
+  {
+    "id": "4",
+    "name": "Triphala Digestive Support",
+    "description": "Classic Ayurvedic formula combining three fruits for digestive health and detoxification. Gentle yet effective cleansing action.",
+    "price": 549,
+    "image": "/images/products/triphala.jpg",
+    "rating": 4.5,
+    "reviewCount": 98,
+    "category": "Digestive Health",
+    "tags": ["digestion", "detox", "cleansing", "gut-health"],
+    "benefits": [
+      "Supports healthy digestion",
+      "Gentle detoxification",
+      "Promotes regular bowel movements",
+      "Rich in antioxidants",
+      "Supports overall gut health"
+    ],
+    "ingredients": [
+      "Amla Fruit Extract (200mg)",
+      "Bibhitaki Fruit Extract (200mg)",
+      "Haritaki Fruit Extract (200mg)",
+      "Vegetarian Capsule"
+    ],
+    "usage": "Take 1-2 capsules before bedtime with warm water.",
+    "inStock": true,
+    "sku": "TRI-001",
+    "weight": "90 capsules"
+  },
+  {
+    "id": "5",
+    "name": "Neem Skin Purifier",
+    "description": "Pure Neem extract for skin health and purification. Natural antibacterial and antifungal properties for clear, healthy skin.",
+    "price": 599,
+    "image": "/images/products/neem.jpg",
+    "rating": 4.4,
+    "reviewCount": 76,
+    "category": "Skincare",
+    "tags": ["skin-health", "purifying", "antibacterial", "natural"],
+    "benefits": [
+      "Purifies and cleanses skin",
+      "Natural antibacterial action",
+      "Supports clear complexion",
+      "Reduces skin inflammation",
+      "Promotes healthy skin"
+    ],
+    "ingredients": [
+      "Neem Leaf Extract (500mg)",
+      "Vegetarian Capsule",
+      "Microcrystalline Cellulose",
+      "Magnesium Stearate"
+    ],
+    "usage": "Take 1 capsule twice daily with water after meals.",
+    "inStock": true,
+    "sku": "NEE-001",
+    "weight": "60 capsules"
+  },
+  {
+    "id": "6",
+    "name": "Giloy Immunity Booster",
+    "description": "Powerful immune system support with pure Giloy extract. Known as the 'root of immortality' in Ayurveda.",
+    "price": 699,
+    "originalPrice": 899,
+    "image": "/images/products/giloy.jpg",
+    "rating": 4.7,
+    "reviewCount": 134,
+    "category": "Immunity",
+    "tags": ["immunity", "fever", "respiratory", "antioxidant"],
+    "benefits": [
+      "Boosts immune system",
+      "Supports respiratory health",
+      "Natural fever reducer",
+      "Rich in antioxidants",
+      "Enhances overall vitality"
+    ],
+    "ingredients": [
+      "Giloy Stem Extract (400mg)",
+      "Vegetarian Capsule",
+      "Rice Flour",
+      "Silica"
+    ],
+    "usage": "Take 1 capsule daily in the morning on empty stomach or as directed by physician.",
+    "isBestseller": true,
+    "inStock": true,
+    "sku": "GIL-001",
+    "weight": "60 capsules"
+  }
+]
+

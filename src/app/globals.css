@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Ayurvedic Light Theme */
+  --background: hsl(120 40% 95%); /* Cream */
+  --foreground: hsl(120 20% 20%); /* Bark */
+  --card: hsl(120 40% 97%);
+  --card-foreground: hsl(120 20% 20%);
+  --popover: hsl(120 40% 97%);
+  --popover-foreground: hsl(120 20% 20%);
+  --primary: hsl(120 40% 70%); /* Forest */
+  --primary-foreground: hsl(120 20% 10%);
+  --secondary: hsl(120 40% 80%); /* Sand */
+  --secondary-foreground: hsl(120 20% 15%);
+  --muted: hsl(120 30% 90%);
+  --muted-foreground: hsl(120 20% 25%); /* Moss */
+  --accent: hsl(120 40% 50%); /* Sage */
+  --accent-foreground: hsl(120 20% 10%);
+  --destructive: hsl(0 100% 50%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(120 20% 85%);
+  --input: hsl(120 40% 95%);
+  --ring: hsl(120 40% 50%);
+
+  --chart-1: hsl(120 40% 70%);
+  --chart-2: hsl(120 50% 60%);
+  --chart-3: hsl(120 60% 50%);
+  --chart-4: hsl(120 70% 40%);
+  --chart-5: hsl(120 80% 30%);
+
+  --sidebar: 245 243 240;
+  --sidebar-foreground: 93 78 55;
+  --sidebar-primary: 107 142 90;
+  --sidebar-primary-foreground: 245 243 240;
+  --sidebar-accent: 232 220 192;
+  --sidebar-accent-foreground: 93 78 55;
+  --sidebar-border: 229 231 235;
+  --sidebar-ring: 107 142 90;
+}
+
+.dark {
+  /* Ayurvedic Dark Theme */
+  --background: hsl(120 20% 10%); /* Bark */
+  --foreground: hsl(120 30% 90%); /* Cream */
+  --card: hsl(120 20% 15%); /* Moss */
+  --card-foreground: hsl(120 30% 90%);
+  --popover: hsl(120 20% 15%);
+  --popover-foreground: hsl(120 30% 90%);
+  --primary: hsl(120 40% 40%); /* Sage */
+  --primary-foreground: hsl(120 30% 90%);
+  --secondary: hsl(120 40% 50%); /* Earth */
+  --secondary-foreground: hsl(120 30% 90%);
+  --muted: hsl(120 20% 20%);
+  --muted-foreground: hsl(120 40% 80%);
+  --accent: hsl(120 40% 60%); /* Forest */
+  --accent-foreground: hsl(120 30% 90%);
+  --destructive: hsl(0 100% 70%);
+  --destructive-foreground: hsl(0 0% 10%);
+  --border: hsl(120 30% 30%);
+  --input: hsl(120 20% 20%);
+  --ring: hsl(120 40% 50%);
+
+  --chart-1: hsl(120 50% 70%);
+  --chart-2: hsl(120 60% 50%);
+  --chart-3: hsl(120 70% 40%);
+  --chart-4: hsl(120 80% 30%);
+  --chart-5: hsl(120 90% 20%);
+
+  --sidebar: 93 78 55;
+  --sidebar-foreground: 245 243 240;
+  --sidebar-primary: 156 175 136;
+  --sidebar-primary-foreground: 93 78 55;
+  --sidebar-accent: 139 115 85;
+  --sidebar-accent-foreground: 245 243 240;
+  --sidebar-border: 139 115 85;
+  --sidebar-ring: 156 175 136;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+}
+
+@layer components {
+  .ayurveda-gradient {
+    background: linear-gradient(135deg, #9CAF88, #6B8E5A);
+  }
+
+  .ayurveda-text-gradient {
+    background: linear-gradient(135deg, #6B8E5A, #8B7355);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-morphism {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+  }
+
+  .dark .glass-morphism {
+    background-color: rgba(93, 78, 55, 0.75);
+    border: 1px solid rgba(156, 175, 136, 0.125);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
