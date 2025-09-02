@@ -3,7 +3,7 @@ import { Leaf, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-
+import pkg from "@/../package.json";
 const footerLinks = {
   company: [
     { name: "About Us", href: "/about" },
@@ -145,7 +145,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Corner Medical Stores. All rights reserved.
+            © {new Date().getFullYear()} Corner Ayurveda. All rights reserved.<span className="text-primary">(v{pkg.version})</span>
           </div>
 
           {/* Social Links */}

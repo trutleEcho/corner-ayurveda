@@ -18,6 +18,8 @@ import {
   ArrowLeft,
   Heart
 } from "lucide-react";
+import LikeButton from "@/components/ui/like-button";
+import ShareButton from "@/components/ui/share-button";
 
 interface BlogPostPageProps {
   params: {
@@ -72,7 +74,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const updatedDate = post.updatedAt ? new Date(post.updatedAt) : null;
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-24">
       {/* Breadcrumb */}
       <div className="bg-muted/30 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,14 +130,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Actions */}
             <div className="flex gap-4">
-              <Button variant="outline" size="sm">
-                <Heart className="h-4 w-4 mr-2" />
-                Like
-              </Button>
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
-              </Button>
+              <LikeButton/>
+              <ShareButton/>
             </div>
           </header>
 
@@ -238,7 +234,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   placeholder="Enter your email" 
                   className="flex-1 px-3 py-2 border border-border rounded-md bg-background text-foreground"
                 />
-                <Button>Subscribe</Button>
+                <Button disabled>Subscribe</Button>
               </div>
             </CardContent>
           </Card>

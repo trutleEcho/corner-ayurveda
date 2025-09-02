@@ -118,7 +118,7 @@ export default function ProductCard({
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full group-hover:bg-primary/90 transition-colors">
+        <Button className="w-full group-hover:bg-primary/90 transition-colors" disabled>
           <ShoppingCart className="h-4 w-4 mr-2" />
           Add to Cart
         </Button>

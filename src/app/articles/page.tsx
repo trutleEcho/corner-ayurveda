@@ -50,7 +50,7 @@ export default async function ArticlesPage() {
   const recentArticles = articles.slice(0, 6);
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-24">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -186,7 +186,7 @@ export default async function ArticlesPage() {
             <CardContent>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <Input placeholder="Enter your email" className="flex-1" />
-                <Button>Subscribe</Button>
+                <Button disabled>Subscribe</Button>
               </div>
             </CardContent>
           </Card>

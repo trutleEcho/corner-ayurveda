@@ -21,6 +21,8 @@ import {
   Leaf,
   Award
 } from "lucide-react";
+import ShareButton from "@/components/ui/share-button";
+import LikeButton from "@/components/ui/like-button";
 
 interface ArticlePageProps {
   params: {
@@ -80,10 +82,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     : [];
 
   const publishedDate = new Date(article.publishedAt || new Date());
-  const updatedDate = article.updatedAt ? new Date(article.updatedAt) : null;
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-24">
       {/* Breadcrumb */}
       <div className="bg-muted/30 py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,14 +140,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
             {/* Actions */}
             <div className="flex gap-4">
-              <Button variant="outline" size="sm">
-                <Heart className="h-4 w-4 mr-2" />
-                Like
-              </Button>
-              <Button variant="outline" size="sm">
-                <Share2 className="h-4 w-4 mr-2" />
-                Share
-              </Button>
+              <LikeButton/>
+              <ShareButton/>
             </div>
           </header>
 
@@ -315,7 +310,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   placeholder="Enter your email" 
                   className="flex-1 px-3 py-2 border border-border rounded-md bg-background text-foreground"
                 />
-                <Button>Subscribe</Button>
+                <Button disabled>Subscribe</Button>
               </div>
             </CardContent>
           </Card>
