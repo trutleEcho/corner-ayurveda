@@ -35,7 +35,7 @@ export async function generateMetadata({params}: ProductPageProps): Promise<Meta
     }
 
     return {
-        title: `${product.name} - CMS`,
+        title: `${product.name} - CA`,
         description: product.description,
         keywords: [product.name, ...product.tags, product.category],
         openGraph: {

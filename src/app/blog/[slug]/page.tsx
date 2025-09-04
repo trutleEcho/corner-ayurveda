@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: `${post.title} - CMS Blog`,
+    title: `${post.title} - CA Blog`,
     description: post.excerpt,
     keywords: [post.title, ...post.tags, post.category],
     openGraph: {

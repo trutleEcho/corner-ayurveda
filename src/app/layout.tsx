@@ -21,8 +21,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "CMS - Ayurvedic Heritage & Natural Wellness",
-    template: "%s | CMS",
+    default: "CA - Ayurvedic Heritage & Natural Wellness",
+    template: "%s | CA",
   },
   description: "Discover the timeless healing power of Ayurveda through our carefully curated collection of natural products, rooted in 5000 years of traditional wisdom.",
   keywords: [
@@ -51,21 +51,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://cornerayurveda.com",
-    siteName: "Corner Medical Stores",
-    title: "CMS - Ayurvedic Heritage & Natural Wellness",
+    siteName: "Corner Ayurveda",
+    title: "CA - Ayurvedic Heritage & Natural Wellness",
     description: "Discover the timeless healing power of Ayurveda through our carefully curated collection of natural products.",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CMS - Ayurvedic Heritage",
+        alt: "CA - Ayurvedic Heritage",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CMS - Ayurvedic Heritage & Natural Wellness",
+    title: "CA - Ayurvedic Heritage & Natural Wellness",
     description: "Discover the timeless healing power of Ayurveda through our carefully curated collection of natural products.",
     images: ["/images/twitter-image.jpg"],
     creator: "@cornerayurveda",

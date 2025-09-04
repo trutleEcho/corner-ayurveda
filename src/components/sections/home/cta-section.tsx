@@ -15,7 +15,7 @@ export default function CtaSection(){
                             </h2>
                             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                                 Join thousands of satisfied customers who have discovered the power of
-                                authentic Ayurvedic wellness with Corner Medical Stores.
+                                authentic Ayurvedic wellness with Corner Ayurveda.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Button size="lg" asChild>

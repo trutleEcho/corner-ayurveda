@@ -14,8 +14,8 @@ import {
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about Corner Medical Stores' journey in preserving Ayurvedic wisdom and our commitment to authentic, natural wellness solutions rooted in 5000 years of tradition.",
-  keywords: ["about corner medical stores", "ayurvedic heritage", "company story", "traditional medicine", "natural wellness"],
+  description: "Learn about Corner Ayurveda' journey in preserving Ayurvedic wisdom and our commitment to authentic, natural wellness solutions rooted in 5000 years of tradition.",
+  keywords: ["about corner ayurveda", "ayurvedic heritage", "company story", "traditional medicine", "natural wellness"],
 };
 
 const values = [
@@ -45,7 +45,7 @@ const milestones = [
   {
     year: "1985",
     title: "Foundation",
-    description: "Corner Medical Stores was founded with a vision to preserve and share authentic Ayurvedic wisdom.",
+    description: "Corner Ayurveda was founded with a vision to preserve and share authentic Ayurvedic wisdom.",
   },
   {
     year: "1995",
@@ -76,14 +76,20 @@ const milestones = [
 
 const team = [
   {
-    name: "Anil Tanksali",
+    name: "Ramchandra Tanksali",
     role: "Founder",
     image: "/images/team/rajesh.jpg",
     bio: "Expert in herbal medicine quality control with extensive knowledge of traditional preparation methods.",
   },
   {
+    name: "Anil Tanksali",
+    role: "MD",
+    image: "/images/team/rajesh.jpg",
+    bio: "Expert in herbal medicine quality control with extensive knowledge of traditional preparation methods.",
+  },
+  {
     name: "Prashant Tanksali",
-    role: "Founder",
+    role: "MD",
     image: "/images/team/anita.jpg",
     bio: "Leading our efforts to validate traditional formulations through modern scientific research.",
   },
@@ -118,7 +124,7 @@ export default function AboutPage() {
                 Preserving Ayurvedic Heritage for Modern Wellness
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
-                For nearly four decades, Corner Medical Stores has been dedicated to preserving
+                For nearly four decades, Corner Ayurveda has been dedicated to preserving
                 the ancient wisdom of Ayurveda while making it accessible to the modern world.
                 Our journey began with a simple belief: that traditional healing wisdom,
                 when combined with modern quality standards, can transform lives.
@@ -318,7 +324,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Experience the transformative power of authentic Ayurveda. Start your journey 
-            to natural wellness with Corner Medical Stores today.
+            to natural wellness with Corner Ayurveda today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>

@@ -15,9 +15,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Contact Us - Corner Medical Stores",
-    description: "Get in touch with Corner Medical Stores for Ayurvedic wellness consultations, product inquiries, or any questions about natural health solutions.",
-    keywords: ["contact corner medical stores", "ayurvedic consultation", "customer support", "wellness inquiry"],
+    title: "Contact Us - Corner Ayurveda",
+    description: "Get in touch with Corner Ayurveda for Ayurvedic wellness consultations, product inquiries, or any questions about natural health solutions.",
+    keywords: ["contact corner ayurveda", "ayurvedic consultation", "customer support", "wellness inquiry"],
 };
 
 const contactInfo = [
@@ -25,7 +25,7 @@ const contactInfo = [
         icon: MapPin,
         title: "Visit Our Store",
         details: [
-            "Corner Medical Stores Ayurvedic Center",
+            "Corner Ayurveda",
             "123 Wellness Street, Andheri West",
             "Mumbai, Maharashtra 400058",
             "India"

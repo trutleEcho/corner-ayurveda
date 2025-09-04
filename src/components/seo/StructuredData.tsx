@@ -17,8 +17,8 @@ export default function StructuredData({ data }: StructuredDataProps) {
 export const organizationStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Corner Medical Stores",
-  "alternateName": "Corner Medical Stores Ayurvedic Heritage",
+  "name": "Corner Ayurveda",
+  "alternateName": "Corner Ayurveda | Ayurvedic Heritage",
   "url": "https://cornerayurveda.com",
   "logo": "https://cornerayurveda.com/logo.png",
   "description": "Authentic Ayurvedic products and natural wellness solutions rooted in 5000 years of traditional wisdom.",
@@ -49,7 +49,7 @@ export const organizationStructuredData = {
 export const websiteStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Corner Medical Stores",
+  "name": "Corner Ayurveda",
   "url": "https://cornerayurveda.com",
   "description": "Authentic Ayurvedic products and natural wellness solutions",
   "potentialAction": {
@@ -71,7 +71,7 @@ export const generateProductStructuredData = (product: any) => ({
   "image": product.image,
   "brand": {
     "@type": "Brand",
-    "name": "Corner Medical Stores"
+    "name": "Corner Ayurveda"
   },
   "offers": {
     "@type": "Offer",
@@ -80,7 +80,7 @@ export const generateProductStructuredData = (product: any) => ({
     "availability": "https://schema.org/InStock",
     "seller": {
       "@type": "Organization",
-      "name": "Corner Medical Stores"
+      "name": "Corner Ayurveda"
     }
   },
   "aggregateRating": {
@@ -103,7 +103,7 @@ export const generateArticleStructuredData = (article: any) => ({
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Corner Medical Stores",
+    "name": "Corner Ayurveda",
     "logo": {
       "@type": "ImageObject",
       "url": "https://cornerayurveda.com/logo.png"

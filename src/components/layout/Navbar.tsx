@@ -42,8 +42,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <Image src="/images/CMS_Label.png" className="block dark:hidden" alt="Logo" width={200} height={100} />
-            <Image src="/images/CMS_Label_Dark.png" className="hidden dark:block" alt="Logo" width={200} height={100} />
+            <Image src="/images/CA_Label.png" alt="Logo" width={200} height={100} />
           </Link>
 
           {/* Desktop Navigation */}

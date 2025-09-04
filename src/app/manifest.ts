@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Corner Medical Stores - Ayurvedic Heritage & Natural Wellness',
-    short_name: 'Corner Medical Stores',
+    name: 'Corner Ayurveda - Ayurvedic Heritage & Natural Wellness',
+    short_name: 'Corner Ayurveda',
     description: 'Discover authentic Ayurvedic products and natural wellness solutions rooted in 5000 years of traditional wisdom.',
     start_url: '/',
     display: 'standalone',

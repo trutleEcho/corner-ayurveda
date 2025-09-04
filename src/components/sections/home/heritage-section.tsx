@@ -40,7 +40,7 @@ export default function HeritageSection(){
                             Our Ayurvedic Heritage
                         </h2>
                         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                            Corner Medical Stores has been preserving and sharing the ancient wisdom of Ayurveda
+                            Corner Ayurveda has been preserving and sharing the ancient wisdom of Ayurveda
                             for generations. Our commitment to authenticity and quality ensures that every
                             product carries the essence of traditional healing.
                         </p>

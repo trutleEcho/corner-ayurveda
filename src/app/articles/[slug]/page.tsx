@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   return {
-    title: `${article.title} - CMS Articles`,
+    title: `${article.title} - CA Articles`,
     description: article.excerpt,
     keywords: [article.title, ...article.tags, article.category],
     openGraph: {

@@ -48,8 +48,7 @@ export default function Footer() {
             {/* Brand Section */}
             <div className="lg:col-span-2">
               <Link href="/" className="flex items-center space-x-2 mb-4">
-                <Image src="/images/CMS_Label.png" className="block dark:hidden" alt="Logo" width={200} height={100} />
-                <Image src="/images/CMS_Label_Dark.png" className="hidden dark:block" alt="Logo" width={200} height={100} />
+                <Image src="/images/CA_Label.png" alt="Logo" width={200} height={100} />
               </Link>
               <p className="text-muted-foreground mb-4 max-w-sm">
                 Preserving the ancient wisdom of Ayurveda through modern,
